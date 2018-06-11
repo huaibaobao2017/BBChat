@@ -122,6 +122,7 @@
 		2162A9F020075DFD005BEB06 /* HistoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162A9EF20075DFD005BEB06 /* HistoryHelper.swift */; };
 		21662D8B1FEB553A009E6054 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21662D8A1FEB553A009E6054 /* ContactManager.swift */; };
 		21662D8D1FEB9DEE009E6054 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21662D8C1FEB9DEE009E6054 /* MessageManager.swift */; };
+		217C3CDB20CE6C8300A9EF6E /* StrangerProfileFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C3CDA20CE6C8300A9EF6E /* StrangerProfileFooterView.swift */; };
 		2181A5F820CE4B3500EC1C48 /* StrangerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181A5F720CE4B3500EC1C48 /* StrangerProfileView.swift */; };
 		2181A5FA20CE4BB200EC1C48 /* StrangerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181A5F920CE4BB200EC1C48 /* StrangerHeaderView.swift */; };
 		21886B9B201EE853006AC291 /* BaseNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21886B9A201EE853006AC291 /* BaseNavigationBar.swift */; };
@@ -283,6 +284,7 @@
 		2162A9EF20075DFD005BEB06 /* HistoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHelper.swift; sourceTree = "<group>"; };
 		21662D8A1FEB553A009E6054 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		21662D8C1FEB9DEE009E6054 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		217C3CDA20CE6C8300A9EF6E /* StrangerProfileFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerProfileFooterView.swift; sourceTree = "<group>"; };
 		2181A5F720CE4B3500EC1C48 /* StrangerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerProfileView.swift; sourceTree = "<group>"; };
 		2181A5F920CE4BB200EC1C48 /* StrangerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerHeaderView.swift; sourceTree = "<group>"; };
 		21886B9A201EE853006AC291 /* BaseNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationBar.swift; sourceTree = "<group>"; };
@@ -1120,6 +1122,7 @@
 				212FC7EE200495AD00D6D072 /* ProfileHeaderView.swift */,
 				2181A5F920CE4BB200EC1C48 /* StrangerHeaderView.swift */,
 				212FC7F020049E6200D6D072 /* ProfileFooterView.swift */,
+				217C3CDA20CE6C8300A9EF6E /* StrangerProfileFooterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1648,6 +1651,7 @@
 				21299D651FFF537700B89424 /* ContactSearchResultsViewModel.swift in Sources */,
 				212FC7F120049E6200D6D072 /* ProfileFooterView.swift in Sources */,
 				212FC7ED20046C1800D6D072 /* ProfileViewModel.swift in Sources */,
+				217C3CDB20CE6C8300A9EF6E /* StrangerProfileFooterView.swift in Sources */,
 				214B52531FF0E14F0017E245 /* MyViewModel.swift in Sources */,
 				21FA08DC20BE966A00781982 /* Date+Extension.swift in Sources */,
 				214F2BD61FE77E1C0043FB51 /* FormView.swift in Sources */,

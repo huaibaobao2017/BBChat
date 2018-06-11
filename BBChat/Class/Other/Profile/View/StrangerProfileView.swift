@@ -13,12 +13,12 @@ private let KProfileTableViewCellID = "KProfileTableViewCellID"
 
 class StrangerProfileView: UIView {
     
-    var contact = Contact() {
+    var request = Request() {
         didSet {
             loadData()
         }
     }
-    
+    // 是否 好友 关系
     var isFriend = false {
         didSet {
             print("isFriend：\(isFriend)")
@@ -34,15 +34,15 @@ class StrangerProfileView: UIView {
     }
     
     private lazy var vm = ProfileViewModel()
-    
+    // 头部（联系人信息）
     var headerView: StrangerProfileHeaderView = {
         let view = StrangerProfileHeaderView()
         view.frame = CGRect(x: 0, y: 0, width: MGScreenW, height: 80 + 85)
         return view
     }()
-    
-    var footerView: ProfileFooterView = {
-        let view = ProfileFooterView()
+    // 尾部（按钮）
+    var footerView: StrangerProfileFooterView = {
+        let view = StrangerProfileFooterView()
         view.frame = CGRect(x: 0, y: 0, width: MGScreenW, height: 148)
         return view
     }()
@@ -84,9 +84,8 @@ extension StrangerProfileView {
     }
     
     private func updateUI() {
-        self.headerView.contact = self.contact
-        self.footerView.contact = self.contact
-        self.footerView.isFriend = self.isFriend
+        self.headerView.request = self.request
+        self.footerView.contact = self.request
         self.tableView.reloadData()
     }
     
@@ -100,7 +99,7 @@ extension StrangerProfileView {
 extension StrangerProfileView {
     
     private func loadData() {
-        self.isFriend = self.vm.isFriend(contact: self.contact)
+        self.isFriend = self.vm.isFriend(contact: self.request)
     }
 }
 
@@ -140,7 +139,7 @@ extension StrangerProfileView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.vm.sectionRowCount(isFriend: self.isFriend, contact: self.contact)
+        return self.vm.sectionRowCount(isFriend: self.isFriend, contact: self.request)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

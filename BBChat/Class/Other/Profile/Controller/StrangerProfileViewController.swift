@@ -38,7 +38,7 @@ extension StrangerProfileViewController {
     }
     
     private func updateUI() {
-        self.profileView.contact = self.request
+        self.profileView.request = self.request
     }
 }
 

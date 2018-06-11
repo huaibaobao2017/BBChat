@@ -34,13 +34,13 @@ class ProfileView: UIView {
     }
     
     private lazy var vm = ProfileViewModel()
-    
+    // 头部（联系人信息）
     var headerView: ProfileHeaderView = {
         let view = ProfileHeaderView()
         view.frame = CGRect(x: 0, y: 0, width: MGScreenW, height: 80)
         return view
     }()
-    
+    // 尾部（按钮）
     var footerView: ProfileFooterView = {
         let view = ProfileFooterView()
         view.frame = CGRect(x: 0, y: 0, width: MGScreenW, height: 148)

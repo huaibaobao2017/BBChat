@@ -10,23 +10,23 @@ import UIKit
 
 class StrangerProfileHeaderView: UIView {
     
-    var contact = Contact() {
+    var request = Request() {
         didSet {
             updateUI()
         }
     }
-
+    // 联系人 信息
     var headerView: ProfileHeaderView = {
         let view = ProfileHeaderView()
         return view
     }()
-    
+    // 附加 留言view
     var messageView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.colorHex(hex: "#f9f9f9")
         return view
     }()
-    
+    // 附加 留言
     var messageLabel: UILabel = {
         let label = UILabel()
         label.text = "海绵宝宝: 为什么拉黑我？？？"
@@ -34,7 +34,7 @@ class StrangerProfileHeaderView: UIView {
         label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
-    
+    // 回复 按钮
     var replyButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.colorHex(hex: "#f8f8f8")
@@ -82,7 +82,8 @@ extension StrangerProfileHeaderView {
     }
     
     private func updateUI() {
-        self.headerView.contact = self.contact
+        self.headerView.contact = self.request
+        self.messageLabel.text = "\(request.nickName.stringValue ?? ""): \(request.message)"
     }
     
     private func layoutSubview() {

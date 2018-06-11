@@ -18,11 +18,12 @@ class StrangerProfileFooterView: UIView {
     // 通过验证 按钮
     lazy var acceptButton: UIButton = {
         let button = UIButton()
+        button.setTitle("通过验证", for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(color: mainColor), for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(color: mainColor.withAlphaComponent(0.8)), for: .highlighted)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(addOrSend), for: .touchUpInside)
+        button.addTarget(self, action: #selector(accept), for: .touchUpInside)
         return button
     }()
     
@@ -100,7 +101,7 @@ extension StrangerProfileFooterView {
 
 extension StrangerProfileFooterView {
 
-    @objc private func addOrSend() {
+    @objc private func accept() {
         guard let contact = self.contact else { return }
             print("通过验证")
         }

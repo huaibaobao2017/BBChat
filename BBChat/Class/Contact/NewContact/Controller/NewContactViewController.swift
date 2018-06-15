@@ -102,7 +102,6 @@ extension NewContactViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        print(self.groups![indexPath.section - 1].requests[indexPath.row].message)
         self.vm.pushViewController(indexPath: indexPath, requests: groups)
     }
     

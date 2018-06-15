@@ -96,10 +96,8 @@ extension NewContactViewModel {
             default:
                 return nil
             }
-        case 1:
-            return StrangerProfileViewController() // 陌生人详情
         default:
-            return nil
+            return StrangerProfileViewController() // 陌生人详情
         }
     }
     

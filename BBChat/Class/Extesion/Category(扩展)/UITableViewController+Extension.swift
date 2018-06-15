@@ -37,6 +37,7 @@ extension UITableViewController {
         if left != nil {
             let leftItem = UIBarButtonItem(barButtonSystemItem: left!, target: self, action: leftAction)
             self.navigationItem.leftBarButtonItem = leftItem
+            self.navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGray
         }
         if isClear == true {
             let image = UIImage.imageWithColor(color: UIColor.clear)

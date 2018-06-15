@@ -154,7 +154,7 @@
 		21C9368920C126F700A28D66 /* SortedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9368820C126F700A28D66 /* SortedRequest.swift */; };
 		21C9368B20C1273B00A28D66 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9368A20C1273B00A28D66 /* Request.swift */; };
 		21C9369220C1330C00A28D66 /* BaseSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9369120C1330C00A28D66 /* BaseSettingViewController.swift */; };
-		21C9369420C1381800A28D66 /* RequestSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9369320C1381800A28D66 /* RequestSettingViewController.swift */; };
+		21C9369420C1381800A28D66 /* ValidateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9369320C1381800A28D66 /* ValidateViewController.swift */; };
 		21C9369620C142F400A28D66 /* BaseEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9369520C142F400A28D66 /* BaseEditingTableViewCell.swift */; };
 		21D224EC1FE1088B00314861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D224EB1FE1088B00314861 /* AppDelegate.swift */; };
 		21D224F31FE1088B00314861 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D224F21FE1088B00314861 /* Assets.xcassets */; };
@@ -316,7 +316,7 @@
 		21C9368820C126F700A28D66 /* SortedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedRequest.swift; sourceTree = "<group>"; };
 		21C9368A20C1273B00A28D66 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		21C9369120C1330C00A28D66 /* BaseSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingViewController.swift; sourceTree = "<group>"; };
-		21C9369320C1381800A28D66 /* RequestSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSettingViewController.swift; sourceTree = "<group>"; };
+		21C9369320C1381800A28D66 /* ValidateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateViewController.swift; sourceTree = "<group>"; };
 		21C9369520C142F400A28D66 /* BaseEditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditingTableViewCell.swift; sourceTree = "<group>"; };
 		21D224E81FE1088B00314861 /* BBChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D224EB1FE1088B00314861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1208,7 +1208,7 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		21C9368C20C132CF00A28D66 /* EditRequest */ = {
+		21C9368C20C132CF00A28D66 /* Validate */ = {
 			isa = PBXGroup;
 			children = (
 				21C9369020C132CF00A28D66 /* ViewModel */,
@@ -1216,14 +1216,14 @@
 				21C9368F20C132CF00A28D66 /* View */,
 				21C9368D20C132CF00A28D66 /* Controller */,
 			);
-			path = EditRequest;
+			path = Validate;
 			sourceTree = "<group>";
 		};
 		21C9368D20C132CF00A28D66 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				21C9369120C1330C00A28D66 /* BaseSettingViewController.swift */,
-				21C9369320C1381800A28D66 /* RequestSettingViewController.swift */,
+				21C9369320C1381800A28D66 /* ValidateViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1376,7 +1376,7 @@
 				214F2BFD1FE7A88C0043FB51 /* Chat */,
 				2199E0061FEA04F200C31D12 /* Profile */,
 				2116D95B1FF7666000286E5B /* Search */,
-				21C9368C20C132CF00A28D66 /* EditRequest */,
+				21C9368C20C132CF00A28D66 /* Validate */,
 				214F2BE61FE77F870043FB51 /* PhoneCode */,
 			);
 			path = Other;
@@ -1611,7 +1611,7 @@
 				21E0EE7D207DAE0100BDEA3B /* ChatListVM.swift in Sources */,
 				2162A9F020075DFD005BEB06 /* HistoryHelper.swift in Sources */,
 				214F2BAC1FE76AB70043FB51 /* Array+Extension.swift in Sources */,
-				21C9369420C1381800A28D66 /* RequestSettingViewController.swift in Sources */,
+				21C9369420C1381800A28D66 /* ValidateViewController.swift in Sources */,
 				214F2BF41FE77F870043FB51 /* SortedCountry.swift in Sources */,
 				2199E00E1FEA055600C31D12 /* ProfileView.swift in Sources */,
 				215FAAE51FF49AB600BE3BA5 /* NickNameSettingViewModel.swift in Sources */,

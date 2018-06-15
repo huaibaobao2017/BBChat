@@ -40,7 +40,10 @@ extension LoginViewController {
     }
     
     private func setupNavigationBar() {
+        UIApplication.shared.statusBarStyle = .default
         superNavigationBar(left: nil, right: "注册", isClear: true)
+        self.navigationController?.navigationBar.tintColor = mainColor
+        self.navigationController?.navigationBar.barTintColor = mainColor
     }
 }
 

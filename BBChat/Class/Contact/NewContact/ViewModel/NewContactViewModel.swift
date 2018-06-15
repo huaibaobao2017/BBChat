@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Hyphenate
 
 class NewContactViewModel {
     
+    private let current = EMClient.shared().currentUsername ?? ""
     weak var controller: UIViewController?
 
 }
@@ -17,7 +19,7 @@ class NewContactViewModel {
 extension NewContactViewModel {
     
     func loadData(callback: ([SortedRequest])->()) {
-        guard let requests = UserDefaults.standard.array(forKey: "friendRequest") as? [[String: Any]] else {
+        guard let requests = UserDefaults.standard.array(forKey: "newfriend_\(current)") as? [[String: Any]] else {
             return
         }
         let systemDate = Date.systemDate

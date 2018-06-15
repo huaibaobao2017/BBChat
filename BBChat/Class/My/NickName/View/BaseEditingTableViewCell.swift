@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Hyphenate
 
 class BaseEditingTableViewCell: UITableViewCell {
+    
+    private let current = EMClient.shared().currentUsername ?? ""
     
     weak var controller: UIViewController? = nil {
         didSet {
@@ -18,7 +21,7 @@ class BaseEditingTableViewCell: UITableViewCell {
     // 用户输入的昵称
     var inputText: String? {
         didSet {
-            UserDefaults.standard.set(inputText, forKey: "requestMessage")
+            UserDefaults.standard.set(inputText, forKey: "req_msg_\(current)")
             UserDefaults.standard.synchronize()
         }
     }

@@ -21,6 +21,7 @@ class NewContactTableViewCell: BaseTableViewCell {
         let view = UIImageView()
         view.image = UIImage(named: "demo6")
         view.contentMode = .scaleAspectFill
+        view.layer.masksToBounds = true
         return view
     }()
     

@@ -104,7 +104,7 @@ extension ProfileFooterView {
             print("发送信息，新建或打开会话")
         } else {
             print("添加到通讯录 ")
-            let vc = RequestSettingViewController(style: .grouped)
+            let vc = ValidateViewController(style: .grouped)
             vc.contact = contact
             self.controller?.navigationController?.pushViewController(vc, animated: true)
         }

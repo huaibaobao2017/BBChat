@@ -71,11 +71,11 @@ extension BaseNavigationController {
         navBarAppearance.titleTextAttributes = titleTextAttributes
         
         // ======================  item  =======================
-        let barItemAppearence = UIBarButtonItem.appearance()
+//        let barItemAppearence = UIBarButtonItem.appearance()
         // 设置导航字体
-        var attributes = [NSAttributedStringKey: Any]()
-        attributes[.foregroundColor] = UIColor.white
-        barItemAppearence.setTitleTextAttributes(attributes, for: .normal)
-        barItemAppearence.setTitleTextAttributes(attributes, for: .highlighted)
+//        var attributes = [NSAttributedStringKey: Any]()
+//        attributes[.foregroundColor] = UIColor.white
+//        barItemAppearence.setTitleTextAttributes(attributes, for: .normal)
+//        barItemAppearence.setTitleTextAttributes(attributes, for: .highlighted)
     }
 }

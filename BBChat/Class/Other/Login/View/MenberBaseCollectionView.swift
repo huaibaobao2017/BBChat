@@ -7,22 +7,11 @@
 //
 
 import UIKit
-import CoreMotion
 
 private let KMenberBaseCollectionViewCellID = "KMenberBaseCollectionViewCellID"
 let KMenberCollectionViewCellID = "KMenberCollectionViewCellID"
 
 class MenberBaseCollectionView: UIView {
-    
-    // 传感器
-    lazy var motionManager = CMMotionManager()
-    
-    // 背景图片
-    private lazy var backgroundImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "login-bg")
-        return view
-    }()
 
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -34,8 +23,7 @@ class MenberBaseCollectionView: UIView {
     
     lazy var collectionView: UICollectionView = { [unowned self] in
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.delegate = self
+        collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.bounces = true
         collectionView.alwaysBounceVertical = true
@@ -48,7 +36,6 @@ class MenberBaseCollectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-        startDeviceMotionUpdates()
     }
     
     override func layoutSubviews() {
@@ -64,7 +51,6 @@ class MenberBaseCollectionView: UIView {
 extension MenberBaseCollectionView {
     
     private func setupUI() {
-        self.addSubview(backgroundImageView)
         self.addSubview(collectionView)
     }
     
@@ -73,43 +59,10 @@ extension MenberBaseCollectionView {
     }
     
     private func layoutSubview() {
-        backgroundImageView.frame = CGRect(x: 0, y: 0, width: self.bounds.width * 3, height: self.bounds.height * 3)
-        backgroundImageView.center = self.center
         collectionView.frame = self.bounds
         layout.itemSize = CGSize(width: self.bounds.width, height: self.bounds.height)
     }
     
-}
-
-extension MenberBaseCollectionView {
-    // 陀螺仪开始更新数据
-    func startDeviceMotionUpdates() {
-        self.motionManager.startDeviceMotionUpdates(to: OperationQueue.current!) { (motion, error) in
-            guard error == nil else {
-                print(error!)
-                return
-            }
-            self.calculateRotationByGyro(motion: motion!)
-        }
-    }
-    // 陀螺仪停止更新数据
-    func stopDeviceMotionUpdates() {
-        self.motionManager.stopDeviceMotionUpdates()
-    }
-    // 根据陀螺仪x y z 轴更新背景图frame
-    func calculateRotationByGyro(motion: CMDeviceMotion) {
-        let x = motion.rotationRate.x
-        let y = motion.rotationRate.y
-        let preX = backgroundImageView.frame.origin.x
-        let preY = backgroundImageView.frame.origin.y
-        let nowX = preX + CGFloat(y)
-        let nowY = preY + CGFloat(x)
-        backgroundImageView.frame = CGRect(x: nowX, y: nowY, width: backgroundImageView.frame.width, height: backgroundImageView.frame.height)
-    }
-}
-
-extension MenberBaseCollectionView: UICollectionViewDelegateFlowLayout {
-
 }
 
 extension MenberBaseCollectionView: UICollectionViewDataSource {

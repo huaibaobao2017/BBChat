@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Hyphenate
 
 class MainTabBarViewController: UITabBarController {
     
+    private let current = EMClient.shared().currentUsername ?? ""
     let user = UserDefaults.standard
 
     lazy var indexFlag: Int = 0
@@ -21,6 +23,7 @@ class MainTabBarViewController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
         self.tabBarController?.tabBar.isHidden = true
         // 设置badgeValue
         setContactBadgeValue()
@@ -116,7 +119,7 @@ extension MainTabBarViewController {
 
     // 设置 通讯录 badgeValue
     private func setContactBadgeValue() {
-        guard let request = self.user.array(forKey: "friendRequest") as? [[String: Any]] else {
+        guard let request = self.user.array(forKey: "newfriend_\(current)") as? [[String: Any]] else {
             return
         }
         let tabbarItem = self.tabBar.items![1] as UITabBarItem
@@ -129,7 +132,7 @@ extension MainTabBarViewController {
     
     // 设置 消息 badgeValue
     private func setSessionBadgeValue() {
-        let count = self.user.integer(forKey: "unReadMessageCount")
+        let count = self.user.integer(forKey: "unreadmessage_\(current)")
         let tabbarItem = self.tabBar.items![0] as UITabBarItem
         if(count == 0) {
             tabbarItem.badgeValue = nil

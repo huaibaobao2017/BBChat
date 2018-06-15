@@ -1,5 +1,5 @@
 //
-//  RequestSettingViewController.swift
+//  ValidateViewController.swift
 //  BBChat
 //
 //  Created by bb on 2018/6/1.
@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Hyphenate
 
 private let KSettingTableViewCellID = "KSettingTableViewCellID"
 
-class RequestSettingViewController: BaseSettingViewController {
+class ValidateViewController: BaseSettingViewController {
+    
+    private let current = EMClient.shared().currentUsername ?? ""
     
     var contact = Contact() {
         didSet {
@@ -19,7 +22,7 @@ class RequestSettingViewController: BaseSettingViewController {
     }
     // 附加信息，本地缓存
     var message: String {
-        let str = UserDefaults.standard.string(forKey: "requestMessage")
+        let str = UserDefaults.standard.string(forKey: "req_msg_\(current)")
         return str ?? "你好，可以加我为好友吗？"
     }
     
@@ -37,7 +40,7 @@ class RequestSettingViewController: BaseSettingViewController {
 
 }
 
-extension RequestSettingViewController {
+extension ValidateViewController {
     
     private func setupUI() {
         self.title = "朋友验证"
@@ -47,12 +50,11 @@ extension RequestSettingViewController {
     
     private func setupNavigationBar() {
         superNavigationBar(left: nil, right: "发送", isClear: false)
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
 }
 
-extension RequestSettingViewController {
+extension ValidateViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "你需要发送验证申请，等对方通过"
@@ -60,7 +62,7 @@ extension RequestSettingViewController {
 
 }
 
-extension RequestSettingViewController {
+extension ValidateViewController {
     
     override func leftItemAction() {
         self.dismiss(animated: true, completion: nil)

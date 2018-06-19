@@ -49,7 +49,7 @@ extension ValidateViewController {
     }
     
     private func setupNavigationBar() {
-        superNavigationBar(left: nil, right: "发送", isClear: false)
+        superNavigationBar(left: nil, right: "发送", isClear: false, color: mainColor)
     }
     
 }
@@ -64,13 +64,18 @@ extension ValidateViewController {
 
 extension ValidateViewController {
     
-    override func leftItemAction() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     override func rightItemAction() {
         print("发送!\(message)")
-        MGContact.addContact(chatId: contact.chatId.stringValue ?? "", message: message)
+        MGContact.addContact(chatId: contact.chatId.stringValue ?? "", message: message) { (error) in
+            if(error == nil) {
+                print("发送加好友申请成功")
+//                self.mg_showGifLoding(<#T##images: [UIImage]?##[UIImage]?#>, size: <#T##CGSize?#>, inView: <#T##UIView?#>)
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                print("发送加好友申请失败\(error?.errorDescription)")
+                self.showHint(hint: "发送加好友申请失败", imageName: nil)
+            }
+        }
     }
     
 }

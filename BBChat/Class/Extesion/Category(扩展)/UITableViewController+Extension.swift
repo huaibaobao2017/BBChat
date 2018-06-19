@@ -46,7 +46,7 @@ extension UITableViewController {
         }
     }
     // 设置导航栏右item(系统样式-文字)
-    func superNavigationBar(left: String?, right: String?, isClear: Bool) {
+    func superNavigationBar(left: String?, right: String?, isClear: Bool, color: UIColor? = UIColor.white) {
         let leftAction = #selector(leftItemAction)
         let rightAction = #selector(rightItemAction)
         if left != nil {
@@ -55,6 +55,7 @@ extension UITableViewController {
         }
         if right != nil {
             let rightItem = UIBarButtonItem(title: right, style: .done, target: self, action: rightAction)
+            rightItem.tintColor = color
             self.navigationItem.rightBarButtonItem = rightItem
         }
         if isClear == true {

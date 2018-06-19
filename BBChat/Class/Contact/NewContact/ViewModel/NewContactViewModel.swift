@@ -74,16 +74,21 @@ extension NewContactViewModel {
     
     // push 控制器
     func pushViewController(indexPath: IndexPath, requests: [SortedRequest]?) {
-        guard let vc = self.controller(indexPath: indexPath), let requests = requests else { return }
-        if vc.isKind(of: StrangerProfileViewController.self) {
-            let requests = requests[indexPath.section - 1].requests
-            let request = requests[indexPath.row]
-            if request.chatId != "" {
+        guard let vc = self.controller(indexPath: indexPath), let sorted = requests else { return }
+        let requests = sorted[indexPath.section - 1].requests
+        let request = requests[indexPath.row]
+        print("是否好友关系：\(request.isFriend)")
+        if request.chatId != "" {
+            if(request.isFriend == true) {
+                let vc = ProfileViewController()
+                vc.contact = request
+                self.controller?.navigationController?.pushViewController(vc, animated: true)
+            } else {
                 guard let vc = vc as? StrangerProfileViewController else { return }
                 vc.request = request
+                self.controller?.navigationController?.pushViewController(vc, animated: true)
             }
         }
-        self.controller?.navigationController?.pushViewController(vc, animated: true)
     }
     
     // 简单跳转路由

@@ -86,6 +86,9 @@ extension ContactsViewController {
         vm.controller = self
         
         // 监听联系人列表更新
+        NOTIFY_ADD(target: self, name: KContactListDidUpdateNotification, selector: #selector(loadData))
+        
+        // 监听联系人列表更新
         NOTIFY_ADD(target: self, name: KContactInfoDidUpdateNotification, selector: #selector(loadContactData))
         
     }
@@ -102,7 +105,7 @@ extension ContactsViewController {
     }
     
     // MARK: -获取环信id
-    private func loadData() {
+    @objc private func loadData() {
         MGContact.getContactsFromLocal(successCallback: { chatIds in
             self.chatIds = chatIds
         })

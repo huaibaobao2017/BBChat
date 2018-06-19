@@ -57,13 +57,9 @@ extension ContactManager {
     /// 好友申请
     
     // 发送加好友申请
-    func addContact(chatId: String, message: String? = nil) {
+    func addContact(chatId: String, message: String? = nil, callback:@escaping (_ error: EMError?)->()) {
         EMClient.shared().contactManager.addContact(chatId, message: message) { (chatId, error) in
-            if error == nil {
-                print("给用户\(chatId)发送加好友申请成功")
-            } else {
-                print("发送加好友申请失败\(error?.errorDescription)")
-            }
+            callback(error)
         }
     }
     
@@ -79,14 +75,9 @@ extension ContactManager {
     }
     
     // 同意加好友申请
-    func acceptInvitation(chatId: String) {
+    func acceptInvitation(chatId: String, callback:@escaping (_ chatId: String?, _ error: EMError?)->()) {
         EMClient.shared().contactManager.approveFriendRequest(fromUser: chatId) { (chatId, error) in
-            if error == nil {
-                print("同意成功")
-                NOTIFY_POST(name: KContactListDidUpdateNotification, object: "didApprove", userInfo: ["chatId": chatId ?? ""])
-            } else {
-                print("同意失败")
-            }
+            callback(chatId, error)
         }
     }
     
@@ -126,13 +117,9 @@ extension ContactManager {
     }
     
     // 将xxx加入黑名单
-    func addToBlackList(chatId: String) {
+    func addToBlackList(chatId: String, callback:@escaping (_ chatId: String?, _ error: EMError?)->()) {
         EMClient.shared().contactManager.addUser(toBlackList: chatId) { (chatId, error) in
-            if error == nil {
-                print("加入黑名单成功")
-            } else {
-                print("加入黑名单失败")
-            }
+            callback(chatId, error)
         }
     }
     

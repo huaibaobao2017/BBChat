@@ -23,7 +23,7 @@ class StrangerProfileFooterView: UIView {
         button.setBackgroundImage(UIImage.imageWithColor(color: mainColor.withAlphaComponent(0.8)), for: .highlighted)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(accept), for: .touchUpInside)
+        button.addTarget(self, action: #selector(acceptBtnClick), for: .touchUpInside)
         return button
     }()
     
@@ -36,7 +36,7 @@ class StrangerProfileFooterView: UIView {
         button.setBackgroundImage(UIImage.imageWithColor(color: UIColor.lightGray.withAlphaComponent(0.8)), for: .highlighted)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-//        button.addTarget(self, action: #selector(videoChat), for: .touchUpInside)
+        button.addTarget(self, action: #selector(backListBtnClick), for: .touchUpInside)
         return button
     }()
     
@@ -100,11 +100,33 @@ extension StrangerProfileFooterView {
 }
 
 extension StrangerProfileFooterView {
-
-    @objc private func accept() {
+    // 通过验证
+    @objc private func acceptBtnClick() {
         guard let contact = self.contact else { return }
-            print("通过验证")
+        print("通过验证")
+        MGContact.acceptInvitation(chatId: contact.chatId.stringValue ?? "") { (chatId, error) in
+            if error == nil {
+                print("同意成功")
+                NOTIFY_POST(name: KContactListDidUpdateNotification, object: "didApprove", userInfo: ["chatId": chatId ?? ""])
+            } else {
+                print("同意失败")
+            }
         }
+    }
+    
+    // 加入黑名单
+    @objc private func backListBtnClick() {
+        guard let contact = self.contact else { return }
+        print("加入黑名单")
+        MGContact.addToBlackList(chatId: contact.chatId.stringValue ?? "") { (chatId, error) in
+            if error == nil {
+                print("加入黑名单成功")
+            } else {
+                print("加入黑名单失败")
+            }
+        }
+    }
+    
 
 }
 

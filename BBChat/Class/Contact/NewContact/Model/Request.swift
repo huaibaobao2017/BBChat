@@ -13,4 +13,8 @@ class Request: Contact {
     // 附加信息
     @objc var message: String = ""
     
+    @objc var isFriend: Bool {
+        return ContactHelper.shared.isFriend(contact: self)
+    }
+    
 }

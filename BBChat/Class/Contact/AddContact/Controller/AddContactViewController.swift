@@ -36,34 +36,11 @@ extension AddContactViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: KAddContactTableViewCellID)
         
         self.vm.controller = self
-        
-        NOTIFY_ADD(target: self, name: KContactInfoDidUpdateNotification, selector: #selector(getContactProfile))
+        self.csvm.controller = self
     }
     
     private func updateUI() {
         self.tableView.reloadData()
-    }
-    
-}
-
-extension AddContactViewController {
-    // 获取联系人 详细信息
-    @objc private func getContactProfile(note: Notification) {
-        self.vm.getContactProfile(note: note)
-    }
-    
-}
-
-extension AddContactViewController {
-    // enter
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let text = searchBar.text
-        self.vm.searchContact(text: text, isUpdating: false)
-    }
-    // 实时
-    override func updateSearchResults(for searchController: UISearchController) {
-        let text = searchController.searchBar.text
-        self.vm.searchContact(text: text, isUpdating: true)
     }
     
 }

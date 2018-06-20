@@ -122,6 +122,7 @@
 		2162A9F020075DFD005BEB06 /* HistoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162A9EF20075DFD005BEB06 /* HistoryHelper.swift */; };
 		21662D8B1FEB553A009E6054 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21662D8A1FEB553A009E6054 /* ContactManager.swift */; };
 		21662D8D1FEB9DEE009E6054 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21662D8C1FEB9DEE009E6054 /* MessageManager.swift */; };
+		216D92C120DA4856009B4834 /* ContactSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216D92C020DA4856009B4834 /* ContactSearchViewModel.swift */; };
 		217C3CDB20CE6C8300A9EF6E /* StrangerProfileFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C3CDA20CE6C8300A9EF6E /* StrangerProfileFooterView.swift */; };
 		2181A5F820CE4B3500EC1C48 /* StrangerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181A5F720CE4B3500EC1C48 /* StrangerProfileView.swift */; };
 		2181A5FA20CE4BB200EC1C48 /* StrangerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181A5F920CE4BB200EC1C48 /* StrangerHeaderView.swift */; };
@@ -284,6 +285,7 @@
 		2162A9EF20075DFD005BEB06 /* HistoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHelper.swift; sourceTree = "<group>"; };
 		21662D8A1FEB553A009E6054 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		21662D8C1FEB9DEE009E6054 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		216D92C020DA4856009B4834 /* ContactSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearchViewModel.swift; sourceTree = "<group>"; };
 		217C3CDA20CE6C8300A9EF6E /* StrangerProfileFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerProfileFooterView.swift; sourceTree = "<group>"; };
 		2181A5F720CE4B3500EC1C48 /* StrangerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerProfileView.swift; sourceTree = "<group>"; };
 		2181A5F920CE4BB200EC1C48 /* StrangerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerHeaderView.swift; sourceTree = "<group>"; };
@@ -1034,6 +1036,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		216D92BF20DA4856009B4834 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				216D92C020DA4856009B4834 /* ContactSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		218FE6321FFB523700769004 /* ContactList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1325,7 +1335,7 @@
 		21D225121FE11B2000314861 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				21D225161FE11B2000314861 /* ViewModel */,
+				216D92BF20DA4856009B4834 /* ViewModel */,
 				21D225141FE11B2000314861 /* Model */,
 				21D225151FE11B2000314861 /* View */,
 				21D225131FE11B2000314861 /* Controller */,
@@ -1360,13 +1370,6 @@
 				2133261C1FFE239300D56E88 /* ContactSearchListViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		21D225161FE11B2000314861 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		21D225171FE11BBC00314861 /* Other */ = {
@@ -1667,6 +1670,7 @@
 				214F2BD61FE77E1C0043FB51 /* FormView.swift in Sources */,
 				213326151FFE1E6300D56E88 /* BaseSearchViewController.swift in Sources */,
 				212419F31FFC9E7D0087F48F /* GroupManager.swift in Sources */,
+				216D92C120DA4856009B4834 /* ContactSearchViewModel.swift in Sources */,
 				214F2BDC1FE77E1C0043FB51 /* MenberFormViewModel.swift in Sources */,
 				215318271FF08F6200B50A18 /* Int64+Extension.swift in Sources */,
 				214F2BF51FE77F870043FB51 /* PhoneCodeTableViewCell.swift in Sources */,

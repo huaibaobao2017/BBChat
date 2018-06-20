@@ -52,9 +52,8 @@ extension NewContactViewController {
         tableView.register(NewContactAddTableViewCell.self, forCellReuseIdentifier: KNewContactAddTableViewCellID)
         tableView.register(NewContactTableViewCell.self, forCellReuseIdentifier: KNewContactTableViewCellID)
         
-        //
         self.vm.controller = self
-
+        self.csvm.controller = self
     }
     
     private func updateUI() {
@@ -69,13 +68,11 @@ extension NewContactViewController {
 }
 
 extension NewContactViewController {
-    
     private func loadData() {
         self.vm.loadData { (groups) in
             self.groups = groups
         }
     }
-    
 }
 
 extension NewContactViewController {

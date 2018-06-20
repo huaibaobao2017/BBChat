@@ -9,6 +9,8 @@
 import UIKit
 
 class ContactSearchListViewController: BaseListViewController {
+    
+    lazy var csvm = ContactSearchViewModel()
 
     lazy var searchController: ContactSearchViewController = { [unowned self] in
         let searchController = ContactSearchViewController(searchResultsController: ContactSearchResultsViewController())
@@ -19,4 +21,29 @@ class ContactSearchListViewController: BaseListViewController {
         return searchController
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NOTIFY_ADD(target: self, name: KContactInfoDidUpdateNotification, selector: #selector(getContactProfile))
+    }
+    
+}
+
+extension ContactSearchListViewController {
+    // enter
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let text = searchBar.text
+        self.csvm.searchContact(text: text, isUpdating: false)
+    }
+    // 实时
+    override func updateSearchResults(for searchController: UISearchController) {
+        let text = searchController.searchBar.text
+        self.csvm.searchContact(text: text, isUpdating: true)
+    }
+}
+
+extension ContactSearchListViewController {
+    // 获取联系人 详细信息
+    @objc private func getContactProfile(note: Notification) {
+        self.csvm.getContactProfile(note: note)
+    }
 }

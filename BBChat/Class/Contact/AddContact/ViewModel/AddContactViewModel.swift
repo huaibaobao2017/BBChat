@@ -13,25 +13,7 @@ class AddContactViewModel {
 }
 
 extension AddContactViewModel {
-    
-    // 搜索联系人，发送通知
-    func searchContact(text: String?, isUpdating: Bool) {
-        guard let text = text else { return }
-        if text == "" { return }
-        NOTIFY_POST(name: KSearchContactNotification, userInfo: ["text": text, "isUpdating": isUpdating])
-    }
-    
-    /// 搜索联系人成功
-    func getContactProfile(note: Notification) {
-        guard let userInfo = note.userInfo as? [String: Contact] else { return }
-        guard let contact = userInfo["contact"] else { return }
-        let vc = ProfileViewController()
-        vc.contact = contact
-        self.controller?.navigationController?.pushViewController(vc, animated: true)
-        UIApplication.shared.statusBarStyle = .lightContent
-    }
-    
-    
+
     /// 添加朋友控制器跳转逻辑
     
     // push 控制器

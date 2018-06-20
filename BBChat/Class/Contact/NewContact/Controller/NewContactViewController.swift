@@ -27,6 +27,13 @@ class NewContactViewController: ContactSearchListViewController {
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 0 表示清空
+        MGUserDefault.saveContactMessageCount(count: 0)
+        // 更新好友请求记录
+        NOTIFY_POST(name: KRequestDidUpdate)
+    }
 }
 
 extension NewContactViewController {
@@ -103,6 +110,18 @@ extension NewContactViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.vm.pushViewController(indexPath: indexPath, requests: groups)
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .default, title: "删除") { (action, indexPath) in
+            let requests = self.groups![indexPath.section - 1].requests
+            let request = requests[indexPath.row]
+            // 删除本地存储数据
+            MGUserDefault.deleteContactRequest(contact: request)
+            // 重新获取本地存储数据
+            self.loadData()
+        }
+        return [delete]
     }
     
 }

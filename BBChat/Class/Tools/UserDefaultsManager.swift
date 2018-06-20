@@ -17,11 +17,36 @@ struct UserDefaultsManager {
 
 extension UserDefaultsManager {
     
-    // 设置 消息 badgeValue
+    /// 设置 消息 badgeValue
     func saveSessionMessageCount(count: Int) {
         UserDefaults.standard.set(count, forKey: "unreadmessage_\(current)")
     }
-    // 保存好友请求
+    
+    /// 设置 联系人 badgeValue
+    func saveContactMessageCount(count: Int) {
+        var c = 0
+        if count != 0 {
+            c = UserDefaults.standard.integer(forKey: "unreadcontact_\(current)")
+            c += count
+        }
+        UserDefaults.standard.set(c, forKey: "unreadcontact_\(current)")
+    }
+
+    /// 删除好友请求
+    func deleteContactRequest(contact: Contact) {
+        guard var request = UserDefaults.standard.array(forKey: "newfriend_\(current)") as? [[String: Any]] else {
+            return
+        }
+        request = request.filter { (d) -> Bool in
+            guard let hdata = d["data"] as? Data else { return false }
+            let c = NSKeyedUnarchiver.unarchiveObject(with: hdata) as? Contact
+            return c?.chatId != contact.chatId
+        }
+        UserDefaults.standard.set(request, forKey: "newfriend_\(current)")
+        UserDefaults.standard.synchronize()
+    }
+    
+    /// 保存好友请求
     func saveContactRequest(contact: Contact, message: String?) {
         let data = NSKeyedArchiver.archivedData(withRootObject: contact)
         let dict: [String: Any] = ["data": data, "message": (message ?? ""), "date": Date.systemDate]

@@ -44,6 +44,8 @@ extension MainTabBarViewController {
         NOTIFY_ADD(target: self, name: KFriendRequestDidReceive, selector: #selector(friendRequestDidReceive))
         // 3.监听新消息
         NOTIFY_ADD(target: self, name: KMessagesDidReceive, selector: #selector(messagesDidReceive))
+        // 4.监听好友请求记录更新
+        NOTIFY_ADD(target: self, name: KRequestDidUpdate, selector: #selector(requestDidUpdate))
     }
     
     private func setupChildViewController() {
@@ -107,7 +109,9 @@ extension MainTabBarViewController {
             // 2.本地保存用户请求
             guard let contact = contact else { return }
             MGUserDefault.saveContactRequest(contact: contact, message: message)
-            //
+            // 3.本地保存好友请求数量
+            MGUserDefault.saveContactMessageCount(count: 1)
+            // 4.联系人未读消息
             self.setContactBadgeValue()
         }
     }
@@ -116,17 +120,20 @@ extension MainTabBarViewController {
     @objc func messagesDidReceive() {
         setSessionBadgeValue()
     }
+    
+    // 更新好友请求记录
+    @objc func requestDidUpdate() {
+        setContactBadgeValue()
+    }
 
     // 设置 通讯录 badgeValue
     private func setContactBadgeValue() {
-        guard let request = self.user.array(forKey: "newfriend_\(current)") as? [[String: Any]] else {
-            return
-        }
+        let count = self.user.integer(forKey: "unreadcontact_\(current)")
         let tabbarItem = self.tabBar.items![1] as UITabBarItem
-        if(request.isEmpty) {
+        if(count == 0) {
             tabbarItem.badgeValue = nil
         } else {
-            tabbarItem.badgeValue = "\(request.count)"
+            tabbarItem.badgeValue = "\(count)"
         }
     }
     

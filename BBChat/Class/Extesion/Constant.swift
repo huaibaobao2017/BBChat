@@ -108,4 +108,6 @@ let KSearchContactNotification = "KSearchContactNotification"
 let KFriendRequestDidReceive = "KFriendRequestDidReceive"
 /// 接收到消息
 let KMessagesDidReceive = "KMessagesDidReceive"
+/// 更新好友请求记录
+let KRequestDidUpdate = "KRequestDidUpdate"
 

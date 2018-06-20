@@ -42,7 +42,7 @@ class NewContactTableViewCell: BaseTableViewCell {
         return label
     }()
     
-    // 接收按钮
+    // 查看按钮
     private lazy var acceptButton: UIButton = {
         let button = UIButton()
         button.isUserInteractionEnabled = false
@@ -55,6 +55,18 @@ class NewContactTableViewCell: BaseTableViewCell {
         button.layer.borderColor = UIColor.init(r: 223, g: 223, b: 223).cgColor
         button.layer.cornerRadius = 4
         button.layer.masksToBounds = true
+        button.isHidden = true
+        return button
+    }()
+    
+    // 接收按钮
+    private lazy var addedButton: UIButton = {
+        let button = UIButton()
+        button.isUserInteractionEnabled = false
+        button.setTitle("已添加", for: .normal)
+        button.setTitleColor(UIColor.gray, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        button.isHidden = true
         return button
     }()
     
@@ -85,12 +97,20 @@ extension NewContactTableViewCell {
         self.contentView.addSubview(nickNameLabel)
         self.contentView.addSubview(messageLabel)
         self.contentView.addSubview(acceptButton)
+        self.contentView.addSubview(addedButton)
     }
     
     private func updateUI() {
         userImageView.sd_setImage(with: URL(string: request?.avatarUrl.stringValue ?? ""), placeholderImage: nil)
         nickNameLabel.text = request?.nickName.stringValue ?? ""
         messageLabel.text = request?.message
+        if request?.isFriend == true {
+            acceptButton.isHidden = true
+            addedButton.isHidden = false
+        } else {
+            acceptButton.isHidden = false
+            addedButton.isHidden = true
+        }
     }
     
     private func layoutSubview() {
@@ -113,6 +133,12 @@ extension NewContactTableViewCell {
             make.height.equalTo(14)
         }
         acceptButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self)
+            make.right.equalTo(self).offset(-10)
+            make.width.equalTo(48)
+            make.height.equalTo(30)
+        }
+        addedButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(self)
             make.right.equalTo(self).offset(-10)
             make.width.equalTo(48)

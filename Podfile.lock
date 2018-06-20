@@ -32,21 +32,6 @@ DEPENDENCIES:
   - XLForm (~> 4.0)
   - YYModel (~> 1.0.4)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - BadgeSwift
-    - FMDB
-    - Hyphenate
-    - IQKeyboardManagerSwift
-    - LeanCloud
-    - MBProgressHUD
-    - MJRefresh
-    - SDWebImage
-    - SnapKit
-    - XLForm
-    - YYModel
-
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   BadgeSwift: 3defa56f504bfb46f2300122c4a565ec9e405c1e
@@ -63,4 +48,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: de300e96628f9ab7477a2df28de8c95001e12bcf
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.2.0

@@ -130,6 +130,7 @@ extension NewContactViewController {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: KNewContactAddTableViewCellID, for: indexPath) as! NewContactAddTableViewCell
+            cell.selectionStyle = .none
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: KNewContactTableViewCellID, for: indexPath) as! NewContactTableViewCell
